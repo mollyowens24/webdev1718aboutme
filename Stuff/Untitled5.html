@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+<script>
+$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("#img1").animate({height: "800px"});
+    });
+    $("#btn2").click(function(){
+        $("#img1").animate({height: "300px"});
+    });
+   
+    $("#flip").click(function(){
+        $("#panel").slideToggle("slow");
+    });
+    $("#button6").click(function(){
+        $("#little").hide("slow", function(){
+            alert("The paragraph is now hidden");
+        });
+});
+  $("#btn3").click(function(){
+        $("h1").css("color", "blue").slideUp(2000).slideDown(2000);
+    });
+});
+</script>
+
+
+</head>
+<body>
+
+
+
+
+<style>
+    .blue-background {
+        background-color: #8CBED6;
+    }
+    
+    h1 {
+        font-family: Impact;
+        font-size: 50px;
+    }
+    p {
+        font-family: Impact;
+        font-size: 30px;
+    }
+    
+    .thin-blue-border{
+        border-color:#0000FF;
+        border-width:7px;
+        border-style:solid;
+        border-radius:50%;
+    }
+  
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
+
+#panel {
+    padding: 50px;
+    display: none;
+}
+
+ 
+  
+</style>
+<div class="blue-background">
+    <button id="#button" type="button" class="btn btn-warning" ><a href ="https://webdev1718aboutme-mcowens.c9users.io/Aboutme.html">HOME</a> </button>
+    
+    
+<h1 id="#swim" align="center">SWIMMING</h1>  
+
+<button id="btn3">Click me</button>
+
+<div class="container">
+  
+
+
+ <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Types of strokes</button>
+    <ul class="dropdown-menu">
+      <li><a href="https://www.youtube.com/watch?v=UffZn_-lU54">Butterfly</a></li>
+      <li><a href="https://www.youtube.com/watch?v=JghqyliWwb4">Backstroke</a></li>
+      <li><a href="https://www.youtube.com/watch?v=QGZ8rIy-YtI">Breastroke</a></li>
+      <li><a href="https://www.youtube.com/watch?v=5HLW2AI1Ink">Freestyle</a></a></a></li>
+    </ul>
+  </div>
+
+
+
+<button id="button6">Hide paragraph</button>
+
+<p id="little">This is a paragraph with little content.</p>
+
+  <img id="img1" src="swimming.JPG" alt="Lane Tech Swim Team" style="height: 300px">
+  <img id="img2" src="utahmount.JPG" alt="Hiking in Park City" style="width:20%;">
+  <img id="img3"src="IMG_8456.JPG" alt="Team" style="width:20%;">
+  
+  <button id="btn1">Animate image1 height</button>
+<button id="btn2">Reset image1 height</button>
+
+<div id="flip">Click to show/hide info</div>
+<div id="panel"> I first learned to swim when I was five years old and I immediatley fell in love with the sport. When I was 8, my parents signed me up for a club team, the Iguanas swim club, where I swam competitivley. When I turned 13, I started to take dance more seriously and that is when I decided to take a break from swim. But, once I came to Lane for high school, I started swimming again for the school's team. During the season we practice every day before school from 6-7:15 and after school from 3:30-6:30.This past summer, the Lane swim team took a trip to Park City, Utah for 8 days to swim. It was lots of fun, but also very hard because the altitude in Utah is higher which makes it hrder to breathe. Every day during the trip we swam twice a day for two hours each, went on a 3 mile run, and did some other form of land training. Most days we went on hikes, once we went kayaking, but my favorite was the mountain biking. The trip was very hard, but it was also really fun. I could notice a big difference in my technique and speed in the pool when I got home. There are four strokes in swimming. There's <a href="https://www.youtube.com/watch?v=UffZn_-lU54">butterfly,</a><a href="https://www.youtube.com/watch?v=JghqyliWwb4"> backstroke,</a><a href="https://www.youtube.com/watch?v=QGZ8rIy-YtI"> breaststroke,</a> and <a href="https://www.youtube.com/watch?v=5HLW2AI1Ink">freestyle.</a> A standard pool is 25 meters long. For races, you multiply 25 by the number of laps in the event, and that is how we name races. For example, four laps of breaststroke would be called the 100 breaststroke. I usually compete in freestyle because that is the stroke I am fastest at. At meets, I swim the 500 freestyle, which is 20 laps in the pool. It is one of the longest and hardest events to swim, but I've never been much of a sprinter, so long distance has always been easier for me.Here is a link to the <a href="http://lanetechaquatics.weebly.com/"> Lane Tech Aquatics Website,</a> which has info on all the water sports at Lane (swimming, diving, water polo) as well as a pool record board which shows all the different events you can swim.</div>
+
+
+
+</div>
+</div>
+</body>
+</html>

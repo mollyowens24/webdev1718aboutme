@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Movies in the Park</title>
+        <style>
+            p, h1 {font-family: helvetica;}
+            p {font-size:1.5em;line-height:1.5em; margin-left: 24px;}
+            pre {font-size: 2em;}
+            div { border: 1px solid black; margin: 4px; border-radius: 5px; background-color: #ededed}
+        </style>
+    </head>
+    <body>
+    <h1>2017 Movies in the Park</h1>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <button id="mov">Open Movie Info</button>
+    <script>
+        /*
+            This script retrieves 311 pot hole service request data for 
+            from the 
+            City of Chicago Data Portal
+            
+            This script doesn't update the DOM.
+
+        */
+
+        // base URL to the movies data
+        var baseURL = 'https://data.cityofchicago.org/resource/qkwe-rtm8.json';
+        
+        // optional filters we're appending - status
+       
+        
+        // full URL
+        var url = baseURL;
+        
+        console.log (url);
+        
+        $("#mov").click(function() {
+            // jQuery command to retrieve json data
+            
+            $.getJSON(url)
+                .done (function (data) {
+                    // TODO:  add script to add data to the DOM
+                    console.log(data);
+
+                    // loop through the records
+                    
+                    $.each(data, function(index, value){
+                       var html = 
+                       "<div><h1>" +  "<br>" +
+                                    "Title: " + value.title +
+                                    "</h1>" +
+                                
+                                    "<h1>" +  "<br>" +
+                                    "Park: " + value.park +
+                                    "</h1>" +
+                                    
+                                    "<h1>" +  "<br>" +
+                                    "Date: " + value.date +
+                                    "</h1>" +
+                                   "</div>";
+                                    
+                        $("body").append(html);
+                    });
+                })
+                
+            
+            
+        });
+        
+        
+    </script>
+    </body>
+</html>

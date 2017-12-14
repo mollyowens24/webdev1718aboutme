@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+    <html>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+ <head>
+        <title>Movies in the Park</title>
+        <style>
+            p, h1 {font-family: arial;}
+            p {font-size:1.5em;line-height:1.5em; margin-left: 24px;}
+            pre {font-size: 2em;}
+            div { border: 1px solid black; margin: 4px; border-radius: 5px; background-color: #c5cae9}
+   
+        </style>
+    </head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <head> 
+    <div class="jumbotron w3-center w3-teal">
+        <h1  style=" text-shadow:5px 5px 0 #000" class="w3-text-red">MOVIES IN THE PARK 2017</h1>   
+    </div>
+    
+    <button id="btn1" class= "btn btn-primary">Click for movies</button>
+    <button id="btn2" type="button" class="btn btn-danger" data-toggle="collapse" data-target="p">Click to collapse</button>
+    </head>
+    <body>
+   <script id="s2">
+        /*
+            This script retrieves 311 pot hole service request data for 
+            from the 
+            City of Chicago Data Portal
+            
+            This script doesn't update the DOM.
+
+        */
+
+        // base URL to the food inspections data
+        var baseURL = 'https://data.cityofchicago.org/resource/cm53-g3up.json';
+        
+        // optional filters we're appending - status
+       
+        
+        // full URL
+        var url = baseURL;
+        
+        console.log (url);
+        $("#btn1").click(function() {
+            $(
+                
+                
+            // jQuery command to retrieve json data
+            
+            $.getJSON(url)
+                .done (function (data) {
+                    // TODO:  add script to add data to the DOM
+                    console.log(data);
+
+                    // loop through the records
+                    
+                    $.each(data, function(index, value){
+                       var html = "<div><h1>" + "</h1>" +
+                                    "<p>Date: " + value.date + "<br>" +
+                                    "Park: " + value.park + "<br>" +
+                                    "Movie: " + value.title + "<br>" + 
+                                    "</p>" +
+                                    "</div>";
+                                    
+                        $("body").append(html);
+                    });
+                })
+            
+            
+            )
+        });    
+        
+        
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#btn1").click(function() {
+             $("p").fadeIn();
+                $("#btn2").click(function() {
+                    $("p").fadeOut();
+    
+    
+                });
+        });
+        
+        });
+    </script>
+    </body>
+    
+</html>
+</body>

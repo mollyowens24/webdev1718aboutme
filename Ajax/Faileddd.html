@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <head>
+        <title>Movies in the Park</title>
+        <style>
+            p, h1 {font-family: impact;}
+            p {font-size:1.5em;line-height:1.0em; margin-left: 12px;}
+            pre {font-size: 1em;}
+            div { border: 1px solid black; margin: 4px; border-radius: 5px; background-color: #00ccff}
+        </style>
+    </head>
+    <body>
+    <h1>Movies in the park</h1>
+
+
+<button type="button" onclick="loadDoc()">Request data</button>
+
+<p id="demo"></p>
+
+
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("demo").innerHTML = this.responseText;
+    }
+  };
+  xhttp.open("GET", "https://data.cityofchicago.org/resource/qkwe-rtm8.json", true);
+  xhttp.send();
+}
+ var baseURL = "https://data.cityofchicago.org/resource/qkwe-rtm8.json";
+        
+        // optional filters we're appending - status
+       
+        
+        // full URL
+        var url = "https://data.cityofchicago.org/resource/qkwe-rtm8.json"
+        
+        console.log (url);
+    //$(document).ready(function() {    
+      
+            // jQuery command to retrieve json data
+        
+            $.getJSON(url)
+                .done (function (data) {
+                    // TODO:  add script to add data to the DOM
+                    console.log(data);
+
+                    // loop through the records
+                    
+                    $.each(data, function(index, value){
+                       var html = "<div><h1>" +  "<br>" +
+                                    "Title: " + value.title +
+                                    "</p>" +
+                                    "<h1>" +  "<br>" +
+                                    "Park: " + value.park +
+                                    "</p>" +
+                                    "<h1>" +  "<br>" +
+                                    "Date: " + value.date +
+                                    "</p>" +
+                                    "</div>";
+                        $("body").append(html);
+                    });
+       </script> 
+</body>
+</html>

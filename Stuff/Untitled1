@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<div class="blue-background">
+<html>
+<head>
+<title> Molly Owens</title>
+</head>
+<body>
+
+<style>
+.thin-yellow-border {
+border-color: #FDFF72;
+border-width: 10px;
+border-style: solid;
+border-radius: 50%;
+}
+
+.thin-blue-border {
+border-color: #00FFFF;
+border-width: 10px;
+border-style: solid;
+border-radius: 50%;
+}
+
+.blue-background {
+background-color: #8CBED6;
+}
+
+.unordered-list {
+font-size: 30px;
+}
+
+</style> 
+
+<h1 style="color: blue">
+All About Me!</h1>
+
+<ul class="unordered-list"> Things I do
+<li>Dance</li>
+<li>Swim</li>
+</ul>
+
+<img class="thin-yellow-border" src="file:///Users/school/Downloads/IMG_3105.JPG" alt="swim team"
+width= 550 px
+height= 500 px>
+
+<img class="thin-blue-border" src="file:///Users/school/Downloads/IMG_6946.JPG"
+width= 550 px
+height= 500 px>
+</div>
+
+</body>
+</html>
