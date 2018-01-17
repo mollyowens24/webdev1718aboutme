@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html  lang="en">
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Chicago Building Violations</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height:80%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class=" w3-container w3-deep-orange w3-center">
+      <h1  class="w3-text-black">Chicago Building Violations 2006-Present</h1>
+    </div>
+    <div id="map"></div>
+  
+    <script>
+
+      // This example displays a marker at the center of Australia.
+      // When the user clicks the marker, an info window opens.
+        var inspectionMap, inspectionLocation;
+
+        function initMap() {
+            inspectionLocation = {lat: 41.945481, lng: -87.691867};
+            inspectionMap = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: inspectionLocation
+            });
+
+        }
+        
+        // Create a function that passes all the elements from the
+        // inspection list
+        function addMarker(obj){
+            
+            var inspLoc = {
+                lat: obj.location.coordinates[1],
+                lng: obj.location.coordinates[0]
+            };
+            //console.log(inspLoc);
+    
+    
+    
+            var marker = new google.maps.Marker({
+              position: inspLoc,
+              map: inspectionMap,
+              title: obj.dba_name
+            });
+            
+            marker.addListener('click', function() {
+              infowindow.open(inspectionMap, marker);
+            });
+        } 
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?AIzaSyA_FVSnM8AzLdsJtGpeRdvwgrsOH_nZZJg&callback=initMap"></script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <script>
+        
+        /*
+            This script retrieves food inspection data for zip 60618
+            for the 4th quarter of 2016 from the 
+            City of Chicago Data Portal
+            
+            It stores the returned results in a variable named inspections.
+            
+            This script doesn't update the DOM.
+        
+        
+        */
+        //  variable to hold the returned data
+        var inspections;
+        
+        // base URL to the food inspections data
+        var inspectionsBaseURL = 'https://data.cityofchicago.org/resource/ucdv-yd74.json';
+      
+        // full URL
+        var inspectionsUrl = inspectionsBaseURL;
+        
+        console.log (inspectionsUrl);
+        
+        $(function(){
+            // jQuery command to retrieve json data
+            
+            initMap();
+            
+            $.getJSON(inspectionsUrl)
+                .done (function (data) {
+                    console.log(data);
+                    
+                    
+                    
+                    $.each(data, function(index,value){
+                        addMarker(value);  
+                    });
+                    
+                });
+            
+            
+        });
+        
+    </script>
+  </body>
+</html>
