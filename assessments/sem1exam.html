@@ -1,0 +1,223 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+<body>
+
+<style>
+body{
+    background-color:	#87CEEB;
+}
+table,th,td {
+  border : 1px solid black;
+  border-collapse: collapse;
+}
+th,td {
+  padding: 5px;
+}
+
+</style> 
+
+
+<div id="div1">
+<h1><u>Molly Owens</u></h1>    
+<h2><i>Period 1</i></h2>   
+
+<hr>    
+</div>
+    
+<div id="div2">
+    <p style="font-size:350%;">
+<img src="https://images-na.ssl-images-amazon.com/images/I/41P60ZPHLnL._SX322_BO1,204,203,200_.jpg" alt="book" style="float:left;width:350px;height:500px;">
+"In Cold Blood" is a novel that was written by Truman Capote, first published in 1966. It tells the true story of the very well-known Clutter Family murder that occured in Garden City in 1959. The book tells the stores of the Clutter family and the murderers leading up to the event, and follows them throughout their capture, trial, and eventual execution. This book is very unique because it is not a typical murder mystery, because the audience already knows who did the crime. The question it raises is why?</p>
+
+</div>
+
+<hr>
+ <button id="btn1" class="btn btn-danger" style="font-family:Impact;"><a href ="https://webdev1718aboutme-mcowens.c9users.io/Stuff/Aboutme.html">Learn more about me!</button>   
+    
+    
+ <div class="container">
+  <h3>Steve Jobs</h3>
+  
+  <div class="card" style="width:400px">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Steve_Jobs_Headshot_2010-CROP.jpg/1200px-Steve_Jobs_Headshot_2010-CROP.jpg" alt="Card image" style="width:100%">
+    <div class="card-body">
+      
+      <p class="card-text">Steve Jobs was an American entrepreneur and inventor, most famously known for being the creator of the iPhone. Jobs died in 2011 due to pancreatic cancer, but his company, Apple, is still one of the leading smartphone and electronics producers around the world today.</p>
+      <button id="btn2" class="btn btn-danger"><a href ="https://en.wikipedia.org/wiki/Steve_Jobs">Wikipedia</a></button>
+    </div>
+  </div>
+  
+  
+  <div class="container">
+  <h2>Famous Chicago Restaurants</h2>
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+
+      <div class="item active">
+        <img src="http://www.nrn.com/sites/nrn.com/files/portillos-beef-fries-promo.gif" alt="Portillos" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Portillos</h3>
+          <p>Portillos is a growing food chain that originated in Chicago in 1963. They are known for their hotdogs, shakes, fries, and chocolate cake. One of the most famous Portillos is in downtown Chicago at Ontario&Clark.</p>
+        </div>
+      </div>
+
+      <div class="item">
+        <img src="https://www.loumalnatis.com/filebin/images/about-pizza-body-large.jpg" alt="Lous" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Lou Malnati's Pizza</h3>
+          <p>Lou Malnati's is a pizza restaurant from Chicago. Chicago is known for its deep dish pizza, and many residents of the city will say that Lou Malnati's has the best.</p>
+        </div>
+      </div>
+    
+      <div class="item">
+        <img src="http://checkplease.wttw.com/sites/default/files/352248_iPad-Large_20120912154649.jpg.resize.768x432.jpg" alt="Mitchells" style="width:100%;">
+        <div class="carousel-caption">
+          <h3>Lou Mitchell's</h3>
+          <p>Lou Mitchell's is another popular restaurant in Chicago, located at Jackson&Clinton near Union Station. They are mainly known for their breakfasts.</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>  
+    <hr>
+    
+ 
+<table id="demo"></table>
+
+<script>
+function loadXMLDoc() {
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      myFunction(this);
+    }
+  };
+  xmlhttp.open("GET", "https://data.cityofchicago.org/resource/tt4n-kn4t.json", true);
+  xmlhttp.send();
+}
+function myFunction(xml) {
+  var i;
+  var xmlDoc = xml.responseXML;
+  var table="<tr><th>Name</th><th>Job Titles</th><th>Full or Part Time</th><th>Department</th><th>Annual Salary</th></tr>";
+  var x = xmlDoc.getElementsByTagName("CD");
+  for (i = 0; i <x.length; i++) { 
+    table += "<tr><td>" +
+    x[i].getElementsByTagName("name")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("job_titles")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+     x[i].getElementsByTagName("full_or_part_time")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("department")[0].childNodes[0].nodeValue +
+    "</td><td>" +
+    x[i].getElementsByTagName("annual_salary")[0].childNodes[0].nodeValue +
+    "</td></tr>";
+  }
+  document.getElementById("demo").innerHTML = table;
+}
+</script>
+<button id="btn4" class= "btn btn-primary">Click for Data, then scroll</button>
+    <button id="btn5" type="button" class="btn btn-danger" data-toggle="collapse" data-target="p">Click to collapse</button>
+  <script id="s2">
+        /*
+            This script retrieves 311 pot hole service request data for 
+            from the 
+            City of Chicago Data Portal
+            
+            This script doesn't update the DOM.
+
+        */
+
+        // base URL to the food inspections data
+        var baseURL = 'https://data.cityofchicago.org/resource/tt4n-kn4t.json';
+        
+        // optional filters we're appending - status
+       
+        
+        // full URL
+        var url = baseURL;
+        
+        console.log (url);
+        $("#btn4").click(function() {
+            $(
+                
+                
+            // jQuery command to retrieve json data
+            
+            $.getJSON(url)
+                .done (function (data) {
+                    // TODO:  add script to add data to the DOM
+                    console.log(data);
+
+                    // loop through the records
+                    
+                    $.each(data, function(index, value){
+                       var html = "<div><h1>" + "</h1>" +
+                                    "<p>Name: " + value.name + "<br>" +
+                                    "Job Title: " + value.job_titles + "<br>" +
+                                    "Department: " + value.department + "<br>" + 
+                                    "Full or Part time:" + value.full_or_part_time + "<br>" +
+                                    "Annual Salary:" + value.annual_salary + "<br>" +
+                                    "</p>" +
+                                    "</div>";
+                                    
+                        $("body").append(html);
+                    });
+                })
+            
+            
+            )
+        });    
+        
+        
+    </script>
+    <script>
+        $(document).ready(function() {
+            $("#btn4").click(function() {
+             $("p").fadeIn();
+                $("#btn5").click(function() {
+                    $("p").fadeOut();
+    
+    
+                });
+        });
+        
+        });
+    </script>
+</body>
+</html>
+
+    </script>
+</body>
+
+</html>
