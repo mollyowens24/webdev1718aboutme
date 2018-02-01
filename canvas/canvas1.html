@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Simple Example</title>
+<style>
+canvas {
+border: #333 10px solid;
+}
+</style>
+</head>
+
+<body>
+<canvas id="myCanvas" width="400px" height="400px"></canvas>
+
+<script>
+var canvas = document.querySelector("#myCanvas");
+var ctx = canvas.getContext("2d");
+
+
+ctx.fillStyle = "#B0C4DE";
+  ctx.fillRect(0,0,400,400);
+
+
+  ctx.moveTo(75,50);
+ctx.lineTo(75,200);
+ctx.lineTo(90,200);
+ctx.lineTo(90,90);
+ctx.lineTo(150,140);
+ctx.lineTo(195,90);
+ctx.lineTo(195,200);
+ctx.lineTo(210,200);
+ctx.lineTo(210,50);
+ctx.lineTo(150,120);
+ctx.lineTo(75,50);
+ctx.fillStyle = "#66CDAA"
+ctx.fill();
+ctx.stroke();
+
+ctx.moveTo(220,50);
+ctx.lineTo(220,200);
+ctx.lineTo(330,200);
+ctx.lineTo(330,50);
+ctx.lineTo(220,50);
+ctx.fillStyle = "#66CDAA"
+ctx.fill();
+ctx.stroke();
+
+ctx.moveTo(250,100);
+ctx.lineTo(250,150);
+ctx.lineTo(290,150);
+ctx.lineTo(290,100);
+ctx.lineTo(250,100);
+
+ctx.stroke();
+
+
+
+</script>
+
+</body>
+
+</html>
