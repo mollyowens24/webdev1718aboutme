@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>    
+
+</div>
+
+
+<canvas id="myCanvas" width="300" height="300"
+style="border:10px solid #c9c;">
+
+</canvas>
+
+<script>
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+var xval= 0;
+var speed= 1;
+var speed2= 1;
+var yval= Math.random()* canvas.height;
+var colr;
+function draw() {
+ctx.clearRect(0,0,canvas.width, canvas.height);
+
+
+
+ctx.fillStyle = "#CD5C5C";
+  ctx.fillRect(0,0,150,150);
+ctx.fillStyle = "#B0C4DE";
+  ctx.fillRect(150,0,150,150);
+ctx.fillStyle = "#66CDAA";
+  ctx.fillRect(150, 150,150,150);
+ctx.fillStyle = "#FFA07A";
+  ctx.fillRect(0,150,150,150);
+     
+if (xval<150 && xval>0 ){
+    colr = "#66CDAA";
+}
+
+if (xval<300 && xval>150 ){
+    colr = "#CD5C5C";
+}
+
+
+
+if (xval < 0) {
+    speed= Math.random(15);
+    
+    
+}
+if (xval>canvas.width){
+    speed=-Math.random(15);
+}
+if (yval < 0) {
+    speed2=Math.random(15);
+}
+if (yval>canvas.height){
+    speed2=-Math.random(15);
+}
+
+yval+= speed2;
+xval+=speed; 
+gditch = colr;
+
+ctx.beginPath();
+ctx.arc(xval, yval, 10, 50, 45 * Math.PI);
+ctx.fillStyle = gditch;
+ctx.fill();
+ctx.stroke();    
+
+requestAnimationFrame(draw);
+}
+
+
+requestAnimationFrame(draw);
+
+
+draw();
+</script>
+
+
+</body>
+</html>
