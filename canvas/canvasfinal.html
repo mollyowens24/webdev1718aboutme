@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<body>
+
+
+
+<canvas id="myCanvas" width="500" height="500">
+
+</canvas>
+<button id="btn">Make balls go faster</button>
+<script>
+$(document).ready(function() {
+        $("#btn").click(function() {
+            draw();
+            requestAnimationFrame(draw);
+        });
+    });
+    
+
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
+
+var xval= 2;
+var speed= 2;
+var speed2= 2;
+var yval= Math.random()* canvas.height;
+var colr;
+function draw() {
+ctx.clearRect(0,0,canvas.width, canvas.height);
+
+//Quadrants
+ctx.fillStyle = "#B0C4DE";
+  ctx.fillRect(0,0,250,250);
+ctx.fillStyle = "#FA8072";
+  ctx.fillRect(250,0,250,250);
+ctx.fillStyle = "#6A5ACD";
+  ctx.fillRect(250, 250,250,250);
+ctx.fillStyle = "#DB7093";
+  ctx.fillRect(0,250,250,250);
+
+//Ball color    
+if (xval<250 && xval>0 && yval<250 && yval>0){
+    colr = "#6A5ACD";
+}
+
+if (xval<500 && xval>250 && yval<250 && yval>0){
+    colr = "#DB7093";
+}
+
+if (xval<250 && xval>0 && yval<500 && yval>250){
+    colr = "#B0C4DE";
+}
+
+if (xval<500 && xval>250 && yval<500 && yval>250){
+    colr = "#FA8072";
+}
+
+//making the ball move
+if (xval < 0) {
+    speed= 3;
+}
+if (xval>canvas.width){
+    speed=-3;
+}
+if (yval < 0) {
+    speed2=3;
+}
+if (yval>canvas.height){
+    speed2=-3;
+}
+
+yval+= speed2;
+xval+=speed; 
+gditch = colr;
+
+//draw ball
+ctx.beginPath();
+ctx.arc(xval, yval, 15, 50, 30 * Math.PI);
+ctx.fillStyle = gditch;
+ctx.fill();
+ctx.stroke();    
+
+  
+
+requestAnimationFrame(draw);
+}
+
+
+
+
+
+draw();
+
+
+</script>
+
+
+</body>
+</html>
