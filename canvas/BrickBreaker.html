@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
      <meta charset="utf-8">
@@ -42,6 +43,7 @@ var x = canvas.width/2;
 var y = canvas.height-30;
 var dx = 2;
 var dy = -2;
+var paddledx = 5; 
 var paddleHeight = 10;
 var paddleWidth = 75;
 var paddleX = (canvas.width-paddleWidth)/2;
@@ -55,16 +57,14 @@ var brickPadding = 10;
 var brickOffsetTop = 30;
 var brickOffsetLeft = 30;
 var score = 0;
-
 var bricks = [];
+var color = "#E400FF";
 for(c=0; c<brickColumnCount; c++) {
     bricks[c] = [];
     for(r=0; r<brickRowCount; r++) {
         bricks[c][r] = { x: 0, y: 0, status: 1 };
     }
 }
-
-
 function draw() {
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
@@ -89,13 +89,53 @@ function collisionDetection() {
         for(r=0; r<brickRowCount; r++) {
             var b = bricks[c][r];
             if(b.status == 1) {
-                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight && color =="#E400FF") {
                     dy = -dy;
                     b.status = 0;
-                    score++;
+                    score=score+1;
                     if(score == brickRowCount*brickColumnCount) {
                         alert("YOU WIN, CONGRATS!");
                         document.location.reload();
+                
+                    }
+                }
+            }
+        }
+    }
+}
+function collisionDetection2() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight && color=="#FF0093") {
+                    dy = -dy;
+                    b.status = 0;
+                    score=score+2;
+                    if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN, CONGRATS!");
+                        document.location.reload();
+                
+                    }
+                }
+            }
+        }
+    }
+}
+
+function collisionDetection3() {
+    for(c=0; c<brickColumnCount; c++) {
+        for(r=0; r<brickRowCount; r++) {
+            var b = bricks[c][r];
+            if(b.status == 1) {
+                if(x > b.x && x < b.x+brickWidth && y > b.y && y < b.y+brickHeight && color =="#FF0000") {
+                    dy = -dy;
+                    b.status = 0;
+                    score=score+3;
+                    if(score == brickRowCount*brickColumnCount) {
+                        alert("YOU WIN, CONGRATS!");
+                        document.location.reload();
+                
                     }
                 }
             }
@@ -106,9 +146,10 @@ function collisionDetection() {
 function drawBall() {
     ctx.beginPath();
     ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#EA1616";
+    ctx.fillStyle = color;
     ctx.fill();
     ctx.closePath();
+    
 }
 function drawPaddle() {
     ctx.beginPath();
@@ -140,14 +181,15 @@ function drawScore() {
     ctx.fillText("Score: "+score, 8, 20);
 }
 
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBricks();
     drawBall();
     drawPaddle();
     drawScore();
     collisionDetection();
-    
+    collisionDetection2();
+    collisionDetection3();
+
     if(x + dx > canvas.width-ballRadius || x + dx < ballRadius) {
         dx = -dx;
     }
@@ -163,19 +205,39 @@ function drawScore() {
             document.location.reload();
         }
     }
+  if (score == 0){
+        color= "#E400FF";
+        dx=2.0;
+        dy=-2.0;
+        paddledx=5.0;
+       
+    }
+    if (score == 5){
+        color= "#FF0093";
+        dx=2.5;
+        dy=-2.5;
+        paddledx=5.3;
+       
+    }
+
+if (score==13){
+    color="#FF0000";
+    dx=3.0;
+    dy=-3.0;
+    paddledx=5.8;
+}
+    
     
     if(rightPressed && paddleX < canvas.width-paddleWidth) {
-        paddleX += 5;
+        paddleX += paddledx;
     }
     else if(leftPressed && paddleX > 0) {
-        paddleX -= 5;
+        paddleX -= paddledx;
     }
     
     x += dx;
     y += dy;
 }
-
-
 
 </script>
 </canvas>
