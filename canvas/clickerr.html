@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <body>
+                <canvas onclick="myFunction(event)" id="myCanvas" width="800" height="451" style="border:3px solid #000000;"></canvas>
+                 <br>
+                 <button class="btn btn-info btn-md" onclick="location.reload()">Restart</button>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+       
+         <img id="tile" src="WALDO.jpg" alt="click">
+          <img id="tile2" src= "https://triviahappy.com/wp-content/uploads/2014/10/waldothumb.jpg" alt="rack">
+        <style>
+            #tile{
+                width:0px;
+                height:0px;
+            }
+            #tile2{
+                width:0px;
+                height:0px;
+            }
+            
+        </style>
+         
+    </body>
+    <head>
+        <div class="jumbotron w3-container w3-center w3-red">
+            <h1> WHERE'S WALDO?</h1>
+        </div>        
+<script>
+        
+          
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var score=0;
+            var lives=6;
+            var randx=Math.round(Math.random()*800);
+            var randy=Math.round(Math.random()*450);
+            ctx.drawImage(tile2,0,0);
+            
+           
+            function myFunction(event){
+                ctx.drawImage(tile2,0,0);
+                ctx.font="30px Arial";
+                ctx.fillText("Score: "+score,675, 30);
+                ctx.font="30px Arial";
+                ctx.fillText("Lives: "+lives, 30, 30);
+                var xpos=event.clientX;
+                var ypos=event.clientY;
+                if (xpos >= randx && xpos <= randx+200 && ypos>= randy && ypos<= randy+150){
+                    console.log("xpos" + xpos, "ypos" + ypos, "randx" + randx,"randy" +randy);
+                    score= score + 1;
+                    randx=Math.round(Math.random()*800);
+                    randy=Math.round(Math.random()*450);
+                    ctx.drawImage(tile,randx, randy);
+                } else {
+                    ctx.drawImage(tile2,0,0);
+                    lives= lives-1;
+                    randx=Math.round(Math.random()*800);
+                    randy=Math.round(Math.random()*450);
+                    ctx.drawImage(tile,randx, randy);
+                    if (lives==0){
+                        alert("Game Over");
+                        location.reload();
+                        }
+                }
+                if (score==20){
+                    alert("You won!");
+                    location.reload();
+                }
+            }
+        </script>
+    </head>
+</html>
