@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <title>Chicago Food/Restaurants</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBViCFc3H_j8Z1r5yBcXVyCq7vb_G3pvYU&callback=initMap"></script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 800px;
+        width: 100%;
+       }
+
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height:80%;
+        margin: 0;
+        padding: 0;
+      }                                                                                 
+
+
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+</style>
+
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-red w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="https://webdev1718aboutme-mcowens.c9users.io/Big_Project_Code/home.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Food & Restuarant</a>
+    <a href="https://webdev1718aboutme-mcowens.c9users.io/Big_Project_Code/entertainment.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Entertainment</a>
+    <a href="https://webdev1718aboutme-mcowens.c9users.io/Big_Project_Code/tourist.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Tourist Sites</a>
+   
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://webdev1718aboutme-mcowens.c9users.io/Big_Project_Code/home.html" class="w3-bar-item w3-button w3-padding-large">Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Food & Restuarant</a>
+    <a href="https://webdev1718aboutme-mcowens.c9users.io/Big_Project_Code/entertainment.html" class="w3-bar-item w3-button w3-padding-large">Entertainment</a>
+    <a href="https://webdev1718aboutme-mcowens.c9users.io/Big_Project_Code/tourist.html" class="w3-bar-item w3-button w3-padding-large">Tourist Sites</a>
+    
+  </div>
+</div>
+
+ 
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">CHICAGO FOOD/RESTAURANTS</h1>
+</header>
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-twothird">
+      <h5 class="w3-padding-32">Chicago is a city with rich culture and many different people who have many different backgrounds. In Chicago, you will find some of the best cuisine, including the famous deep dish pizza. Use the blue buttons and the map created below to see some of the best restaurants in the city.</h5>
+    </div>
+
+<button onClick= "initChin()" id="btn1" class= "btn btn-primary">CHINESE</button>
+<button onClick= "initItal()" id="btn2" class= "btn btn-primary">ITALIAN</button>
+<button onClick= "initPizz()" id="btn3" class= "btn btn-primary">PIZZA</button>
+<button onClick= "initBreakfast()" id="btn4" class= "btn btn-primary">BREAKFAST</button>
+<button onClick= "initDes()" id="btn5" class= "btn btn-primary">DESSERTS/TREATS</button>
+<button onCLick= "initBrew()" id= "btn6" class= "btn btn-primary">BREWERIES</button>
+<button onClick= "initMex()" id="btn7" class="btn btn-primary">MEXICAN</button>
+<button onCLick= "initCafe()" id="btn8" class= "btn btn-primary">CAFES</button>
+ <!--Chinese Places-->
+ <div id="map"></div>
+    <script>
+    function initMa() {
+      var uluru ={lat: 41.8667904, lng: -87.645691};
+      var mark = {lat: -25.363, lng: 131.044};
+      var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: mark,
+          map: map
+        });
+        
+    }
+      function initChin() {
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var c1 = {lat: 41.854543, lng: -87.6322579};
+        var c2 = {lat: 41.9286117, lng: -87.6487259};
+        var c3 = {lat: 41.9319416, lng: -87.7023701};
+        var c4 = {lat: 41.9724942, lng: -87.6599885};
+        var c5 = {lat: 41.8530703, lng: -87.6334813};
+        var c6 = {lat: 41.968573, lng: -87.710644};
+        var c7 = {lat: 41.890301, lng: -87.6282866};
+        var c8 = {lat: 41.8852012, lng: -87.6190959};
+        var c9 = {lat: 41.8486483, lng: -87.632201};
+        var c10 = {lat: 41.891482, lng: -87.624537};
+       
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: c1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: c2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: c4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: c10,
+          map: map
+        });
+      }
+    
+  function initItal(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var i1 = {lat: 41.9316487, lng: -87.6488418};
+        var i2 = {lat: 41.9286117, lng: -87.6487259};
+        var i3 = {lat: 41.9176573, lng: -87.6982788};
+        var i4 = {lat: 41.9013622, lng: -87.6276941};
+        var i5 = {lat: 42.003113, lng: -87.816915};
+        var i6 = {lat: 41.9975983, lng: -87.760967};
+        var i7 = {lat: 41.978559, lng:-87.6685488};
+        var i8 = {lat: 41.8819188, lng: -87.6529673};
+        var i9 = {lat: 41.8805779, lng: -87.6300945};
+        var i10 = {lat: 41.8694964, lng: -87.6642344};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: i1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: i2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: i4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: i10,
+          map: map
+        });
+  }
+  function initPizz(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var p1 = {lat: 41.921917, lng: -87.664297};
+        var p2 = {lat: 41.8903425, lng: -87.6337034};
+        var p3 = {lat: 41.963201, lng: -87.673795};
+        var p4 = {lat: 41.9434156, lng: -87.678194};
+        var p5 = {lat: 41.9399925, lng: -87.6556796};
+        var p6 = {lat: 41.9207723, lng: -87.6374282};
+        var p7 = {lat: 41.9537855, lng:-87.7413869};
+        var p8 = {lat: 41.9371468, lng: -87.6680979};
+        var p9 = {lat: 41.8834277, lng: -87.6300945};
+        var p10 = {lat: 41.8960582, lng: -87.6756506};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: p1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: p2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: p4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: p10,
+          map: map
+        });
+  }
+   function initBreakfast(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var b1 = {lat: 41.884643, lng: -87.6228815};
+        var b2 = {lat: 41.8897429, lng: -87.6620525};
+        var b3 = {lat: 41.8919752, lng: -87.6179597};
+        var b4 = {lat: 41.9380058, lng: -87.644475};
+        var b5 = {lat: 41.891477, lng: -87.6308168};
+        var b6 = {lat: 42.0092743, lng: -87.6663797};
+        var b7 = {lat: 41.8846919, lng:-87.6484066};
+        var b8 = {lat: 41.8691944, lng: -87.6606876};
+        var b9 = {lat: 41.877822, lng: -87.642015};
+        var b10 = {lat: 41.9535944, lng: -87.7193006};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: b1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: b2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: b4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: b10,
+          map: map
+        });
+  }
+         function initDes(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var d1 = {lat: 41.8907607, lng: -87.6238068};
+        var d2 = {lat: 41.8847249, lng: -87.648742};
+        var d3 = {lat: 41.8977772, lng: -87.6249576};
+        var d4 = {lat: 41.8908371, lng: -87.6555294};
+        var d5 = {lat: 41.8902301, lng: -87.6306331};
+        var d6 = {lat: 41.9088845, lng: -87.6749271};
+        var d7 = {lat: 41.8840879, lng: -87.6410991};
+        var d8 = {lat: 41.900105, lng: -87.6263845};
+        var d9 = {lat: 41.8797693, lng: -87.6303311};
+        var d10 = {lat: 41.8908753, lng: -87.6166389};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: d1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: d2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: d4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: d10,
+          map: map
+        });
+  }
+        
+    function initBrew(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var br1 = {lat: 42.0401525, lng: -87.7021973};
+        var br2 = {lat: 42.0080792, lng: -87.6650483};
+        var br3 = {lat: 41.960691, lng: -87.739327};
+        var br4 = {lat: 41.9593418, lng: -87.6819467};
+        var br5 = {lat: 41.9421513, lng: -87.7085301};
+        var br6 = {lat: 41.9390782, lng: -87.6443573};
+        var br7 = {lat: 41.9312462, lng: -87.7115526};
+        var br8 = {lat: 41.8961714, lng: -87.6715088};
+        var br9 = {lat: 41.88962, lng: -87.6705296};
+        var br10 = {lat: 41.8870971, lng: -87.6721183};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: br1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: br2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: br4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: br10,
+          map: map
+        });
+  }
+      function initMex(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var m1 = {lat: 41.968434, lng: -87.720522};
+        var m2 = {lat: 41.9612318, lng: -87.7133784};
+        var m3 = {lat: 41.9353526, lng: -87.6471059};
+        var m4 = {lat: 41.9289241, lng: -87.6977277};
+        var m5 = {lat: 41.9265047, lng: -87.6978096};
+        var m6 = {lat: 41.925, lng: -87.6870783};
+        var m7 = {lat: 41.9172562, lng: -87.6984031};
+        var m8 = {lat: 41.8580193, lng: -87.6642617};
+        var m9 = {lat: 41.8575446, lng: -87.6696718};
+        var m10 = {lat: 41.8044667, lng: -87.7237644};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: m1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: m2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: m4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: m10,
+          map: map
+        });
+  }
+        
+   function initCafe(){
+        var uluru = {lat: 41.8667904, lng: -87.645691};
+        var ca1 = {lat: 41.80831, lng: -87.676946};
+        var ca2 = {lat: 41.837859, lng: -87.65091};
+        var ca3 = {lat: 41.857657, lng: -87.662753};
+        var ca4 = {lat: 41.9034077, lng: -87.6719656};
+        var ca5 = {lat: 41.9286915, lng: -87.6425415};
+        var ca6 = {lat: 41.8982848, lng: -87.636424};
+        var ca7 = {lat: 41.9246434, lng: -87.6999349};
+        var ca8 = {lat: 41.918639, lng: -87.687247};
+        var ca9 = {lat: 41.8865239, lng: -87.6778928};
+        var ca10 = {lat: 41.9668734, lng: -87.6871164};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 11,
+          center: uluru
+        });
+        
+           var marker = new google.maps.Marker({
+          position: ca1,
+          map: map
+        });
+         var marker = new google.maps.Marker({
+          position: ca2,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca3,
+          map: map
+        });
+      var marker = new google.maps.Marker({
+          position: ca4,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca5,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca6,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca7,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca8,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca9,
+          map: map
+        });
+        var marker = new google.maps.Marker({
+          position: ca10,
+          map: map
+        });
+  }
+        
+        
+              
+           
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA397yJg5prePRGuTJpQhJf3AGeNmyHKU0&callback=initMap">
+</script>
+
+</body>
+</html>
