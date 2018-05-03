@@ -1,29 +1,131 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS Template</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <body>
+    <title>Tourist Sites</title>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBViCFc3H_j8Z1r5yBcXVyCq7vb_G3pvYU&callback=initMap"></script>
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       #map {
+        height: 800px;
+        width: 100%;
+       }
+
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height:80%;
+        margin: 0;
+        padding: 0;
+      }                                                                                 
+
+
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #e9e9e9;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #2196F3;
+  color: white;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container button:hover {
+  background: #ccc;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
 </style>
-<body>
+
 
 <!-- Navbar -->
 <div class="w3-top">
   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/home.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
-    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/foodrestaurants.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Food & Restuarant</a>
+    <a href"https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/home.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/foodrestaurant.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Food</a>
     <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/entertainment.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Entertainment</a>
-    <a href="#" class="w3-bar-item w3-button w3-padding-large w3-white">Tourist Sites</a>
-   
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/tourist.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Tourist Sites</a>
+    
   </div>
 
  
@@ -31,8 +133,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
-  <h1 class="w3-margin w3-jumbo">Tourist Page</h1>
-  <p class="w3-xlarge">The Places to vist in Chicago</p>
+  <h1 class="w3-margin w3-jumbo">Tourist Sites</h1>
   
 </header>
 
@@ -40,9 +141,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-center">
-      <h1>Field Museam</h1>
+      <h1>Field Museum</h1>
       <h5 class="w3-padding-32"></h5>
+      <a href="https://www.fieldmuseum.org/">
 <img src="https://assets3.thrillist.com/v1/image/2674359/size/tmg-article_default_mobile.jpg">
+</a>
     </div>
 
     <div class="w3-third w3-center">
@@ -54,8 +157,11 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 <!-- Second Grid -->
 <div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
   <div class="w3-content">
-    <div class="w3-third w3-center">
-<img src="https://img.grouponcdn.com/deal/xnECoLbKrvxo9zMAk6e8Sv/NorthExterior_U-505Banners_0013-2048x1227/v1/c700x420.jpg">      
+    <div class="w3-center">
+      <h1>Museum of Science and Industry</h1>
+      <a href="https://www.msichicago.org/">
+<img src="https://img.grouponcdn.com/deal/xnECoLbKrvxo9zMAk6e8Sv/NorthExterior_U-505Banners_0013-2048x1227/v1/c700x420.jpg">
+</a>
     </div>
 
     <div class="w3-twothird">
@@ -66,12 +172,15 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
   </div>
 </div>
+<!-- Third Grid -->
 <div class="w3-row-padding w3-padding-64 w3-container">
   <div class="w3-content">
     <div class="w3-center">
-      <h1>Field Museam</h1>
+      <h1>Shedd Aquarium</h1>
       <h5 class="w3-padding-32"></h5>
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chicago%2C_June_2015_-_064.jpg/1200px-Chicago%2C_June_2015_-_064.jpg">
+      <a href="https://www.sheddaquarium.org/">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chicago%2C_June_2015_-_064.jpg/1200px-Chicago%2C_June_2015_-_064.jpg" width="700" height="420">
+</a>
     </div>
 
     <div class="w3-third w3-center">
@@ -79,7 +188,25 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     </div>
   </div>
 </div>
+<!-- Forth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
+      <h1>Adler Planetarium</h1>
+      <a href="https://www.adlerplanetarium.org/">
+<img src="https://3scape.com/photo/9715/Adler-Planetarium-Aerial.jpg" width="700" height="420">
+</a>
+    </div>
 
+    <div class="w3-twothird">
+      
+      <h1 class="w3-padding-32"></h1>
+
+      <p class="w3-text-grey"></p>
+    </div>
+  </div>
+</div>
+<!-- Black Bar -->
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
     <h1 class="w3-margin w3-xlarge"></h1>
 </div>
@@ -89,7 +216,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
   <div class="w3-xlarge w3-padding-32">
 
  </div>
- <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">Hamsters</a></p>
+ <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">MEMEZ</a></p>
 </footer>
 
 <script>
