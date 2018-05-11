@@ -12,108 +12,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
-.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Comic Sans MS", cursive, sans-serif}
+.w3-bar,h1,button {font-family: "Comic Sans MS", cursive, sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
 
-* {box-sizing: border-box;}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
 
 
 
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-       #map {
-        height: 800px;
-        width: 100%;
-       }
-
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height:80%;
-        margin: 0;
-        padding: 0;
-      }                                                                                 
-
-
-* {box-sizing: border-box;}
-
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-}
-
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #2196F3;
-  color: white;
-}
-
-.topnav .search-container {
-  float: right;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-  background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-}
 </style>
 
 
@@ -121,15 +26,20 @@ body {
 <div class="w3-top">
   <div class="w3-bar w3-red w3-card w3-left-align w3-large">
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
-    <a href"https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/home.html" class="w3-bar-item w3-button w3-padding-large w3-hover-white">Home</a>
-    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/foodrestaurant.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Food</a>
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/home.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Home</a>
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/foodrestaurants.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Food</a>
     <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/entertainment.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Entertainment</a>
-    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/tourist.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-white">Tourist Sites</a>
-    
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/tourist.html" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Tourist Sites</a>
+  </div>
+</div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/foodrestaurants.html" class="w3-bar-item w3-button w3-padding-large">Food</a>
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/entertainment.html" class="w3-bar-item w3-button w3-padding-large">Entertainment</a>
+    <a href="https://mollyowens24.github.io/webdev1718aboutme/Big_Project_Code/tourist.html" class="w3-bar-item w3-button w3-padding-large">Tourist Sites</a>
   </div>
 
- 
-</div>
 
 <!-- Header -->
 <header class="w3-container w3-red w3-center" style="padding:128px 16px">
@@ -143,7 +53,7 @@ body {
     <div class="w3-center">
       <h1>Field Museum</h1>
       <h5 class="w3-padding-32"></h5>
-      <a href="https://www.fieldmuseum.org/">
+      <a href="https://www.fieldmuseum.org/" target="_blank">
 <img src="https://assets3.thrillist.com/v1/image/2674359/size/tmg-article_default_mobile.jpg">
 </a>
     </div>
@@ -159,7 +69,7 @@ body {
   <div class="w3-content">
     <div class="w3-center">
       <h1>Museum of Science and Industry</h1>
-      <a href="https://www.msichicago.org/">
+      <a href="https://www.msichicago.org/" target="_blank">
 <img src="https://img.grouponcdn.com/deal/xnECoLbKrvxo9zMAk6e8Sv/NorthExterior_U-505Banners_0013-2048x1227/v1/c700x420.jpg">
 </a>
     </div>
@@ -178,7 +88,7 @@ body {
     <div class="w3-center">
       <h1>Shedd Aquarium</h1>
       <h5 class="w3-padding-32"></h5>
-      <a href="https://www.sheddaquarium.org/">
+      <a href="https://www.sheddaquarium.org/" target="_blank">
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Chicago%2C_June_2015_-_064.jpg/1200px-Chicago%2C_June_2015_-_064.jpg" width="700" height="420">
 </a>
     </div>
@@ -193,8 +103,8 @@ body {
   <div class="w3-content">
     <div class="w3-center">
       <h1>Adler Planetarium</h1>
-      <a href="https://www.adlerplanetarium.org/">
-<img src="https://3scape.com/photo/9715/Adler-Planetarium-Aerial.jpg" width="700" height="420">
+      <a href="https://www.adlerplanetarium.org/" target="_blank">
+<img src="http://meteorite-recovery.tripod.com/2006/adler/adler-mars23.jpg" width="700" height="500">
 </a>
     </div>
 
@@ -206,6 +116,73 @@ body {
     </div>
   </div>
 </div>
+<!-- Fith Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
+      <h1>The Art Institute of Chicago</h1>
+      <h5 class="w3-padding-32"></h5>
+      <a href="http://www.artic.edu/" target="_blank">
+<img src="https://paintyourlandscape.files.wordpress.com/2011/10/pa280047.jpg" width="700" height="420">
+</a>
+    </div>
+
+    <div class="w3-third w3-center">
+      
+    </div>
+  </div>
+</div>
+<!-- Sixth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
+      <h1>Navy Pier</h1>
+      <a href="https://navypier.org/" target="_blank">
+<img src="https://cache-graphicslib.viator.com/graphicslib/page-images/742x525/574594_shutterstock_180786248.jpg">
+</a>
+    </div>
+
+    <div class="w3-twothird">
+      
+      <h1 class="w3-padding-32"></h1>
+
+      <p class="w3-text-grey"></p>
+    </div>
+  </div>
+<!-- Seventh Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
+      <h1>Sears Tower (Willis Tower)</h1>
+      <h5 class="w3-padding-32"></h5>
+      <a href="http://www.willistower.com/" target="_blank">
+<img src="http://images.skyscrapercenter.com/building/pa210042a.jpg" width="250" height="470">
+</a>
+    </div>
+
+    <div class="w3-third w3-center">
+      
+    </div>
+  </div>
+</div>
+<!-- Eighth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container">
+  <div class="w3-content">
+    <div class="w3-center">
+      <h1>Sears Tower (Willis Tower) Skydeck</h1>
+      <a href="http://theskydeck.com/" target="_blank">
+<img src="http://www.trbimg.com/img-1401375658/turbine/chi-photos-the-willis-tower-ledge-20140529-007/768" width="700" height="420">
+</a>
+    </div>
+
+    <div class="w3-twothird">
+      
+      <h1 class="w3-padding-32"></h1>
+
+      <p class="w3-text-grey"></p>
+    </div>
+  </div>
+
 <!-- Black Bar -->
 <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
     <h1 class="w3-margin w3-xlarge"></h1>
