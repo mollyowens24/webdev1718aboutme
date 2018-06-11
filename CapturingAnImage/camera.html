@@ -21,15 +21,20 @@
           <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
           <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCF7avkh-6gWe5u3JLGyqnPDX61s1Qs0Yk&libraries=places&callback=initAutocomplete" async defer></script>
 
-<div id='container'>
+ <div id='container' class="container-fluid">
               <h1>Molly Owens</h1>
-              <video id="player" controls autoplay></video>
-              <input type="file" accept="audio/*" capture id='recorder'>
-              <audio id="audio" controls></audio>
+              <br>
+              <p><video id="player" controls autoplay></video></p>
+              <br>
+            <!--click to call-->
+              <div>Call Molly : <a href="tel:+1-773-706-6112">+1 (773) 706-6112</a></div>
+              <div>Call John : <a href="tel:1-773-202-5862">+1 (773) 202-5862</a></div>
               <button id="capture">Capture</button>
-              <button>Audio</button>
+              <button id=gFS>Open/Escape Fullscreen</button>
               <canvas id="canvas" width=320 height=240></canvas>
               <script>
+              
+            //video
                 const player = document.getElementById('player');
                 const canvas = document.getElementById('canvas');
                 const context = canvas.getContext('2d');
@@ -46,16 +51,53 @@
                     player.srcObject = stream;
                   });
                   
-                //audio  
-                var recorder = document.getElementById('recorder');
-                var audio = document.getElementById('audio');
-                recorder.addEventListener('change', function(e) {
-                  var file = e.target.files[0];
-                  audio.src =  URL.createObjectURL(file);
+            //location
+                window.onload = function(){
+                  var startPos;
+                  var geoSuccess=function(position){
+                    startPos=position;
+                    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
+                    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+                  };
+                  navigator.geolocation.getCurrentPosition(geoSuccess);
+                };
+                
+            //fullScreen
+                var gFS=document.getElementById('gFS');
+                gFS.addEventListener('click', function (){
+                  toggleFullScreen();
                 });
+                function toggleFullScreen(){
+                  var doc=window.document;
+                  var docEl=doc.documentElement;
+                  
+                  var requestFullScreen = docEl.requestFullScreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullScreen;
+                  var cancelFullScreen = doc.exitFullScreen || doc.mozCancelFullScreen || doc.webkitCancelFullScreen || doc.msCancelFullScreen;
+                  
+                  if(!doc.fullScreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement){
+                    requestFullScreen.call(docEl);
+                  }
+                  else{
+                    cancelFullScreen.call(doc);
+                  }
+                }
+                
+            //orientation
+                if (window.DeviceOrientationEvent) {
+                    window.addEventListener("deviceorientation", function(event) {
+                        var rotateDegrees = event.alpha;
+                        var leftToRight = event.gamma;
+                        var frontToBack = event.beta;
+                
+                        handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+                    }, true);
+                }
+
+                var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
+                    // do something amazing
+                };
                 
               </script>
-
 </div>
 
 </body>
